@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <nav class="navbar" role="navigation" aria-label="Navegação principal">
+        <h1>Gerenciamento de Tarefas</h1>
+        <ul>
+            <li><a href="index4.html" aria-label="Acessar Cadastro de Usuários" tabindex="0">Cadastro de Usuários</a></li>
+            <li><a href="index5.html" aria-label="Acessar Cadastro de Tarefas" tabindex="0">Cadastro de Tarefas</a></li>
+            <li><a href="index6.html" aria-label="Acessar Gerenciamento de Tarefas" tabindex="0">Gerenciar Tarefas</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Gerenciamento de Tarefas</h1>
+    </header>
+
+    <main>
+        <section class="task-board" aria-labelledby="taskBoardTitle">
+            <h2 id="taskBoardTitle" class="sr-only">Quadro de Tarefas</h2> <!-- Título oculto para leitores de tela -->
+
+            <div class="task-column" id="todo-column" aria-live="polite">
+                <h3>A Fazer</h3>
+                <div class="task-list" id="todo">
+                    <div class="task-card">
+                        <p><strong>Descrição:</strong> Exemplo de Tarefa</p>
+                        <p><strong>Setor:</strong> TI</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                        <p><strong>Responsável:</strong> João</p>
+                        <div class="task-actions">
+                            <button class="edit-btn" onclick="editarTarefa(1)">Editar</button>
+                            <button class="delete-btn" onclick="confirmarExclusao(1)">Excluir</button>
+                            <select onchange="alterarStatus(1, this.value)">
+                                <option value="a_fazer">A Fazer</option>
+                                <option value="fazendo">Fazendo</option>
+                                <option value="pronto">Pronto</option>
+                            </select>
+                            <button class="update-status-btn" onclick="atualizarStatus(1)">Alterar Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-column" id="in-progress-column" aria-live="polite">
+                <h3>Fazendo</h3>
+                <div class="task-list" id="in-progress">
+                </div>
+            </div>
+
+            <div class="task-column" id="done-column" aria-live="polite">
+                <h3>Pronto</h3>
+                <div class="task-list" id="done">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="deleteModal" class="modal" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <h2 id="deleteModalTitle">Confirmar Exclusão</h2>
+            <p>Você tem certeza que deseja excluir esta tarefa?</p>
+            <button id="confirmDelete" class="modal-btn" aria-label="Confirmar exclusão da tarefa" tabindex="0" onclick="excluirTarefa()">Confirmar</button>
+            <button id="cancelDelete" class="modal-btn" aria-label="Cancelar exclusão da tarefa" tabindex="0" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vinicius Vazquez Moreira. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
